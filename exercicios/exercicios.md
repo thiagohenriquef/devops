@@ -7,7 +7,7 @@
 
 - Domínio usado pelo instrutor do curso é: dev-ops-ninja.com
 
-https://github.com/jonathanbaraldi/devops
+https://github.com/thiagohenriquef/devops
 
 
 # Aula 4 - Ambiente
@@ -38,7 +38,7 @@ $ usermod -aG docker ubuntu
 
 Nesse exercício iremos construir as imagens dos containers que iremos usar, colocar elas para rodar em conjunto com o docker-compose. 
 
-Sempre que aparecer <dockerhub-user>, você precisa substituir pelo seu usuário no DockerHub.
+Sempre que aparecer thiagohenriquef, você precisa substituir pelo seu usuário no DockerHub.
 
 Entrar no host A, e instalar os pacotes abaixo, que incluem Git, Python, Pip e o Docker-compose.
 ```sh
@@ -52,7 +52,7 @@ $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 Com os pacotes instalados, agora iremos baixar o código fonte e começaremos a fazer os build's e rodar os containers.
 ```sh
 $ cd /home/ubuntu
-$ git clone https://github.com/jonathanbaraldi/devops
+$ git clone https://github.com/thiagohenriquef/devops
 $ cd devops/exercicios/app
 ```
 
@@ -61,8 +61,8 @@ $ cd devops/exercicios/app
 Iremos fazer o build da imagem do Redis para a nossa aplicação.
 ```sh
 $ cd redis
-$ docker build -t <dockerhub-user>/redis:devops .
-$ docker run -d --name redis -p 6379:6379 <dockerhub-user>/redis:devops
+$ docker build -t thiagohenriquef/redis:devops .
+$ docker run -d --name redis -p 6379:6379 thiagohenriquef/redis:devops
 $ docker ps
 $ docker logs redis
 ```
@@ -74,11 +74,11 @@ Com isso temos o container do Redis rodando na porta 6379.
 Iremos fazer o build do container do NodeJs, que contém a nossa aplicação.
 ```sh
 $ cd ../node
-$ docker build -t <dockerhub-user>/node:devops .
+$ docker build -t thiagohenriquef/node:devops .
 ```
 Agora iremos rodar a imagem do node, fazendo a ligação dela com o container do Redis.
 ```sh
-$ docker run -d --name node -p 8080:8080 --link redis <dockerhub-user>/node:devops
+$ docker run -d --name node -p 8080:8080 --link redis thiagohenriquef/node:devops
 $ docker ps 
 $ docker logs node
 ```
@@ -90,11 +90,11 @@ Com isso temos nossa aplicação rodando, e conectada no Redis. A api para verif
 Iremos fazer o build do container do nginx, que será nosso balanceador de carga.
 ```sh
 $ cd ../nginx
-$ docker build -t <dockerhub-user>/nginx:devops .
+$ docker build -t thiagohenriquef/nginx:devops .
 ```
 Criando o container do nginx a partir da imagem e fazendo a ligação com o container do Node
 ```sh
-$ docker run -d --name nginx -p 80:80 --link node <dockerhub-user>/nginx:devops
+$ docker run -d --name nginx -p 80:80 --link node thiagohenriquef/nginx:devops
 $ docker ps
 ```
 Podemos acessar então nossa aplicação nas portas 80 e 8080 no ip da nossa instância.
@@ -112,9 +112,9 @@ Para rodar nosso docker-compose, precisamos remover todos os containers que est�
 
 É preciso editar o arquivo docker-compose.yml, onde estão os nomes das imagens e colocar o seu nome de usuário.
 
-- Linha 8 = <dockerhub-user>/nginx:devops
-- Linha 18 = image: <dockerhub-user>/redis:devops
-- Linha 37 = image: <dockerhub-user>/node:devops
+- Linha 8 = thiagohenriquef/nginx:devops
+- Linha 18 = image: thiagohenriquef/redis:devops
+- Linha 37 = image: thiagohenriquef/node:devops
 
 Após alterar e colocar o nome correto das imagens, rodar o comando de up -d para subir a stack toda.
 
@@ -578,7 +578,7 @@ $ kubectl label nodes k8s-1 disktype-
 
 ### 1 - Fazer fork do repositório.
 
-https://github.com/jonathanbaraldi/kubernetes-deploy-go
+https://github.com/thiagohenriquef/kubernetes-deploy-go
 
 Você deve fazer um fork dos repositórios, ou criar os seus usando os arquivos como exeplo.
 
@@ -592,7 +592,7 @@ Habilitar o Pipeline dentro do Rancher, e fazer uma alteração no código-fonte
 
 Acompanhar todo o deployment. 
 
-https://github.com/jonathanbaraldi/kubernetes-deploy-jboss
+https://github.com/thiagohenriquef/kubernetes-deploy-jboss
 
 
 
